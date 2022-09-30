@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="mb-3">
+            <label for="cantidad" class="form-label">Ingresar Medida</label>
+            <input type="number" class="form-control form-control-lg" id="cantidad" [(ngModel)]="cantidad" placeholder="Ingrese medida a convertir .." (input)="convertir()">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <label for="tengo">Tengo</label>
+            <select class="form-select form-select-lg" aria-label="Default select example" id="tengo" [(ngModel)]="tengo" (change)="convertir()">
+                <option *ngFor="let unidad of unidadMedidaList; let i = index"  value="{{unidad}}">{{unidad}}</option>
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <label for="quiero">Quiero</label>
+            <select class="form-select form-select-lg" aria-label="Default select example" id="quiero" [(ngModel)]="quiero" (change)="convertir()">
+                <option *ngFor="let unidad of unidadMedidaList; let i = index" value="{{unidad}}">{{unidad}}</option>
+            </select>
+        </div>
+    </div>
+    <h5 *ngIf="cantidad > 0" class="text-center mt-5">
+        <span class="badge bg-success">{{cantidad}} {{tengo}}</span>
+        <span class="badge bg-secondary">SON</span>
+        <span class="badge bg-success">{{total | number : '0.0-2'}} {{quiero}}</span>
+    </h5>
+</div>
